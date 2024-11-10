@@ -1,0 +1,25 @@
+{{define "tel-form"}}
+<form class="flex justify-between items-end gap-4"
+	hx-post="{{if .ID}}/phone-number/{{.ID}}{{else}}/contact/{{.ContatoID}}/phone-number{{end}}"
+	hx-swap="outerHTML">
+	<div class="flex flex-col">
+		<input type="text" name="descricao" placeholder="descrição..."
+			value="{{.Descricao}}" class="bg-transparent text-sm underline
+			text-slate-400">
+		<input type="text" name="numero" placeholder="número..."
+			value="{{.Numero}}" class="bg-transparent underline">
+	</div>
+	<div>
+		<button class="border-green-600 text-green-600 hover:border-green-400
+			hover:text-green-400 transition border rounded p-1">
+			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24
+				24" stroke-width="1.5" stroke="currentColor" class="size-3">
+				<path stroke-linecap="round" stroke-linejoin="round" d="m4.5
+					12.75 6 6 9-13.5" />
+			</svg>
+		</button>
+	</div>
+</form>
+{{end}}
+
+{{template "tel-form" .telefone}}
